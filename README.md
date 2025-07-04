@@ -95,4 +95,4 @@ Castro Gutierrez, H. (2025). Intelligent Models for Selected Disease Prediction 
 ---
 
 ## 📬 Contact
-For questions or contributions, please reach out via GitHub issues or email `hcastrog@purdue.edu`.
+For questions or contributions, please reach out via GitHub issues or email `hcastrog at purdue.edu`.
