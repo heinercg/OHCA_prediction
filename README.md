@@ -85,8 +85,7 @@ The models were primarily trained and evaluated on the **Subtyping Cardiac Arres
 ---
 
 ## 📄 License
-MIT License
-
+ GPL-3.0 license
 ---
 
 ## 🧠 Citation
