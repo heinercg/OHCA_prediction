@@ -17,7 +17,7 @@ This folder contains classical **shallow machine learning models** trained on EC
 - Support Vector Machines (SVM - linear and RBF)
 
 ### Features:
-- Nested Cross-Validation for model selection
+- Nested Cross-Validation for Model Selection
 - SMOTE for data imbalance
 - Preprocessing using MaxAbsScaler
 - F1-score focused optimization
@@ -71,7 +71,7 @@ The top-performing deep learning model was an LSTM using 12-lead ECG signals and
 ---
 
 ## 🧪 Dataset
-The models were primarily trained and evaluated on the **Subtyping Cardiac Arrest dataset** provided by Nightingale Open Science. This dataset contains ECGs recorded prior to OHCA and from control patients.
+The models were primarily trained and evaluated on the **Subtyping Cardiac Arrest dataset** provided by Nightingale Open Science. This dataset contains ECGs recorded before OHCA and from control patients.
 
 ---
 
@@ -80,7 +80,7 @@ The models were primarily trained and evaluated on the **Subtyping Cardiac Arres
 |-------------------------------|----------|----------|-----------|-------------|-------------|
 | SVM-RBF (Shallow)             | 0.964    | 0.900    | 0.951     | 0.861       | 0.984       |
 | Boosting SVM-RBF (Custom)     | 0.977    | 0.977    | 0.965     | 0.917       | 0.988       |
-| LSTM + Wavelet (Deep Learning)| 0.988    | 0.988    | 0.989     | 0.986       | 0.989       |
+| LSTM + resampling             | 0.988    | 0.988    | 0.989     | 0.986       | 0.989       |
 
 ---
 
