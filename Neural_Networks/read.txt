@@ -1,1 +1,103 @@
+# Neural Network Models for OHCA Prediction
 
+This folder contains the neural network-based models developed for predicting **Out-of-Hospital Cardiac Arrest (OHCA)** using ECG signals. The models apply advanced deep learning architectures and signal processing techniques to classify ECG data obtained prior to cardiac arrest events.
+
+This work corresponds to **Chapter 3** of the dissertation and explores time-series specialized machine learning algorithms, dimensionality reduction strategies, and explainability techniques.
+
+---
+
+## 📊 Dataset
+
+The **Subtyping Cardiac Arrest Dataset** was used, which includes ECG recordings from emergency department visits. ECGs recorded up to 24 hours before OHCA events were included, along with control ECGs up to 7 days before a non-OHCA event. Final counts:
+- 23 OHCA ECGs (after filtering)
+- 247 control ECGs
+
+---
+
+## ⚙️ Preprocessing Pipeline
+
+1. **Signal Denoising and Augmentation**
+   - Gaussian noise
+   - Baseline shifts
+   - Sine pulses
+   - Time shifts
+
+2. **Signal Segmentation**
+   - One-second segments centered at R-peaks
+   - 500 samples per segment
+
+3. **Signal Scaling**
+   - Z-score standardization applied per ECG signal
+
+4. **Dimensionality Reduction**
+   - **Resampling** at 50, 100, and 200 Hz
+   - **Wavelet Decomposition** using Daubechies (db2-db6), levels 3-5
+
+---
+
+## 🧠 Neural Network Models
+
+### Recurrent Neural Networks (RNN Family)
+- **Simple RNN**
+- **Long Short-Term Memory (LSTM)**
+- **Gated Recurrent Unit (GRU)**
+
+### Radial Basis Function Networks (RBFN)
+- Used for both resampled and wavelet-transformed data
+
+Each model was tested using:
+- **Lead II only**
+- **All 12 ECG leads**
+
+---
+
+## 🔎 Experiments
+
+### Dimensionality Reduction Comparison
+- Resampling: Optimal sampling rate = **100 Hz**
+- Wavelet: Best performance with **db2 level 4**
+
+### Model Performance (Sample)
+| Model          | Leads     | Input Type       | Accuracy | F1 Score | AUROC |
+|----------------|-----------|------------------|----------|----------|--------|
+| LSTM           | 12 leads  | Wavelet db2-l4    | 0.988    | 0.988    | 0.988  |
+| Simple RNN     | 12 leads  | Resampled (100Hz) | 0.964    | 0.964    | 0.964  |
+| RBFN           | Lead II   | Resampled (100Hz) | 0.963    | 0.963    | 0.963  |
+
+---
+
+## 📈 Imbalanced Dataset Tests
+
+Performance was evaluated across five imbalance ratios: 1:1, 1:2, 1:3, 1:5, 1:10. Key finding: **F1-score** decreased with imbalance, while **accuracy and AUROC** remained misleadingly stable.
+
+---
+
+## 🧠 Explainability: TimeSHAP
+
+To interpret model predictions:
+- **Feature-level analysis:** Identified important leads (V2, V4, III)
+- **Event-level analysis:** Found that the last 30 time steps before prediction were most influential
+- **Global SHAP values:** Revealed contributions across leads and time
+
+---
+
+## 🏆 Best Model
+
+**LSTM + resampling (100 Hz) + 12 leads**
+- Accuracy: 0.988
+- F1 Score: 0.988
+- Excellent generalization on the test set
+- Minimal overfitting
+
+---
+
+## 🔬 Citation
+
+If you use this repository or its content, please cite: 
+Castro Gutierrez, H. (2025). Intelligent Models for Selected Disease Prediction Using Health Electronic Records. Doctoral dissertation, Purdue University.
+
+---
+at 
+## 📬 Contact
+
+For issues or collaboration, reach out to `hcastrog at purdue.edu` or open a GitHub issue.
